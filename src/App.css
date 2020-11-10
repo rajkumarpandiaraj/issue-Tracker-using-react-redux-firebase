@@ -13,11 +13,38 @@
 .card:hover{
     cursor: pointer;
 }
+.navbar{
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.address{
+    width: 70%;
+}
+
+.container{
+    margin-top: 7rem;
+}
+#all-issue:hover{
+    text-decoration: none;
+}
+#all-issue .issue{
+    color: #000;
+}
+#text-muted{
+    color : rgb(65, 63, 63) !important;
+}
 
 @media(max-width : 768px){
     
     #container{
         width: 80vw !important;
-
+    }
+    .address{
+        width: 100%;
+    }
+    .navbar h1{
+        font-size: 1rem;
     }
 }

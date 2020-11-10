@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 
-function IssueCard(props) {
+function IssueCard2(props) {
     const { issueItem, auth, profile } = props;
     const {issue, status, openedBy, date} = issueItem;
     const proceedDate = moment(date.toDate()).calendar()
@@ -12,11 +12,8 @@ function IssueCard(props) {
         return <Redirect exact to='/login' />
     }
 
-    let bgClass = ''
-
-    if(status === 'Not Opened'){
-        bgClass = 'bg-danger' 
-    }else if(status === 'Opened'){
+    let bgClass = '';
+    if(status === 'Opened' ){
         bgClass = 'bg-warning'
     }else if(status === 'Re-Opened'){
         bgClass = 'bg-secondary'
@@ -24,9 +21,10 @@ function IssueCard(props) {
         bgClass = 'bg-success'
     }
 
+
     return (
         <>
-        <div className={`card my-4 ${bgClass}`} style={status === 'Not Opened' ? { } : {cursor : "not-allowed"}}>
+        <div className={`card my-4 ${bgClass}`}>
             <div className="card-body">
                 <p className='Issue mb-1 issue'>{issue}</p>
                 <p className='card-subtitle' id='text-muted'>{proceedDate}</p>
@@ -41,8 +39,8 @@ function IssueCard(props) {
 const mapStateToProps = state => {
     return{
         auth : state.firebase.auth,
-        profile : state.firebase.profile,
+        profile : state.firebase.profile
     }
 }
 
-export default connect(mapStateToProps)(IssueCard)
+export default connect(mapStateToProps)(IssueCard2)
